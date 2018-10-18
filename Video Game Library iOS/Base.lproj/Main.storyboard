@@ -44,7 +44,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OlF-Eu-3Gu">
-                                                    <rect key="frame" x="211" y="71.666666666666671" width="62.333333333333314" height="21"/>
+                                                    <rect key="frame" x="211" y="72.666666666666671" width="62.333333333333314" height="19"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="8/28/97">
                                                             <attributes>
@@ -63,13 +63,15 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Rating: M" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JHg-sZ-nYh">
-                                                    <rect key="frame" x="211" y="19.666666666666668" width="173" height="21.000000000000004"/>
+                                                    <rect key="frame" x="211" y="16" width="173" height="25.666666666666671"/>
                                                     <fontDescription key="fontDescription" name="ComicSansMS" family="Comic Sans MS" pointSize="18"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="iDx-3S-MC1" secondAttribute="bottom" id="0vv-Tv-ETp"/>
+                                                <constraint firstItem="JHg-sZ-nYh" firstAttribute="bottom" secondItem="DEv-DU-L7I" secondAttribute="bottom" id="921-N9-N1u"/>
+                                                <constraint firstItem="JHg-sZ-nYh" firstAttribute="centerY" secondItem="DEv-DU-L7I" secondAttribute="centerY" id="BJy-sg-pet"/>
                                                 <constraint firstItem="DEv-DU-L7I" firstAttribute="top" secondItem="qUN-dk-aeL" secondAttribute="topMargin" constant="5" id="CRx-b6-E85"/>
                                                 <constraint firstItem="iDx-3S-MC1" firstAttribute="leading" secondItem="JHg-sZ-nYh" secondAttribute="trailing" id="HIS-sr-0ZH"/>
                                                 <constraint firstItem="DEv-DU-L7I" firstAttribute="leading" secondItem="47G-b9-LmB" secondAttribute="leading" id="JTz-Qi-eO4"/>
@@ -82,11 +84,13 @@
                                                 <constraint firstAttribute="bottom" secondItem="iDx-3S-MC1" secondAttribute="bottom" id="ioP-Kq-gK2"/>
                                                 <constraint firstAttribute="trailing" secondItem="iDx-3S-MC1" secondAttribute="trailing" id="j3m-Kg-vpq"/>
                                                 <constraint firstItem="OlF-Eu-3Gu" firstAttribute="centerY" secondItem="47G-b9-LmB" secondAttribute="centerY" id="njm-oa-UyO"/>
+                                                <constraint firstItem="JHg-sZ-nYh" firstAttribute="top" secondItem="DEv-DU-L7I" secondAttribute="top" id="rJq-8Z-1Hj"/>
                                                 <constraint firstItem="DEv-DU-L7I" firstAttribute="trailing" secondItem="47G-b9-LmB" secondAttribute="trailing" id="yjd-YV-Pfy"/>
                                                 <constraint firstItem="47G-b9-LmB" firstAttribute="top" secondItem="DEv-DU-L7I" secondAttribute="bottom" constant="28" id="zF1-ZI-tiZ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="dueDateLabel" destination="OlF-Eu-3Gu" id="Xb3-3U-WQU"/>
                                             <outlet property="gameLabel" destination="DEv-DU-L7I" id="016-sH-Q0i"/>
                                             <outlet property="genreLabel" destination="47G-b9-LmB" id="4Gn-QF-sRC"/>
                                             <outlet property="ratingLabel" destination="JHg-sZ-nYh" id="WG8-kg-DCt"/>

@@ -41,9 +41,31 @@ class MainPageTableViewController: UIViewController, UITableViewDelegate, UITabl
             
         }
         
-        
+        if let dueDate = currentGame.dueDate {
+            
+            cell.dueDateLabel.text = formatDate(dueDate)
+            
+        } else {
+            
+            cell.dueDateLabel.text = ""
+            
+        }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        //this allows us to return an array of actions that the row will have (if any)
+        
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (_, _) in
+            //remove the game from current index from our game
+            GameManager.sharedInstance.removeGameAtIndex(index: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+        
+        return [deleteAction]
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -52,13 +74,6 @@ class MainPageTableViewController: UIViewController, UITableViewDelegate, UITabl
         
     }
     
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        
-        let checkOutAction = UITableViewRowAction(style: .normal, title: "Check out", handler: (GameManager.sharedInstance.checkOutGame(at: indexPath.row) -> Void))
-        
-    }
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         

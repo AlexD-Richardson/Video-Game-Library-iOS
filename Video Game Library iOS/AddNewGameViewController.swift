@@ -46,14 +46,7 @@ class AddNewGameViewController: UIViewController, UIPickerViewDelegate, UIPicker
         
         guard titleOfGame.text!.trimmingCharacters(in: .whitespacesAndNewlines) != ("") else {
             
-            let emptyFieldAlert = UIAlertController(title: "Empty Title", message: "Please enter in the title of the game", preferredStyle: .alert)
-            
-            let closeAction = UIAlertAction(title: "close", style: .default)
-            
-            emptyFieldAlert.addAction(closeAction)
-            
-            
-            return self.present(emptyFieldAlert, animated: true, completion: nil)
+                return showErrorAlert()
             
             }
         
@@ -83,6 +76,19 @@ class AddNewGameViewController: UIViewController, UIPickerViewDelegate, UIPicker
         
         
         self.performSegue(withIdentifier: "unwindToGameList", sender: self)
+        
+    }
+    
+    func showErrorAlert() {
+        
+        let emptyFieldAlert = UIAlertController(title: "Empty Title", message: "Please enter in the title of the game", preferredStyle: .alert)
+        
+        let closeAction = UIAlertAction(title: "close", style: .default)
+        
+        emptyFieldAlert.addAction(closeAction)
+        
+        
+        self.present(emptyFieldAlert, animated: true, completion: nil)
         
     }
 

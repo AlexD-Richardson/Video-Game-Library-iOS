@@ -14,7 +14,12 @@ class GameManager {
     static let sharedInstance = GameManager()
     
     //No other file will be able to make instances of this class
-    private init() { }
+    private init() {
+        
+         gameArray[0].dueDate = Date()
+        gameArray[0].checkedIn = false
+        
+    }
     
     
     private var gameArray: [VideoGame] =
@@ -26,6 +31,7 @@ class GameManager {
          VideoGame(title: "Batman Arkham City", genre: "Action/Adventure", rating: "T"),
          
          VideoGame(title: "Super Smash Bros Melee", genre: "Fighting", rating: "T")]
+    
     
     func getGameCount() -> Int {
         
@@ -49,6 +55,12 @@ class GameManager {
     func checkOutGame(at index: Int) {
         
         gameArray[index].checkedIn = false
+        
+    }
+    
+    func removeGameAtIndex(index: Int) {
+        
+        gameArray.remove(at: index)
         
     }
     

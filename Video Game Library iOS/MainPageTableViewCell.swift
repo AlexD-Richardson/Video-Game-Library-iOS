@@ -18,6 +18,7 @@ class MainPageTableViewCell: UITableViewCell {
     
     @IBOutlet weak var statusView: UIView!
     
+    @IBOutlet weak var dueDateLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
