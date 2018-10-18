@@ -17,6 +17,7 @@
 		9E02684B2176717A0068F084 /* AddNewGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E02684A2176717A0068F084 /* AddNewGameViewController.swift */; };
 		9E02684D2177AB370068F084 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E02684C2177AB370068F084 /* GameManager.swift */; };
 		9E02684F2178BFE50068F084 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E02684E2178BFE50068F084 /* Utilities.swift */; };
+		9E02685121790CC90068F084 /* EditGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E02685021790CC90068F084 /* EditGameViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		9E02684A2176717A0068F084 /* AddNewGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewGameViewController.swift; sourceTree = "<group>"; };
 		9E02684C2177AB370068F084 /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		9E02684E2178BFE50068F084 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		9E02685021790CC90068F084 /* EditGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGameViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				9E02684A2176717A0068F084 /* AddNewGameViewController.swift */,
 				9E02684C2177AB370068F084 /* GameManager.swift */,
 				9E02684E2178BFE50068F084 /* Utilities.swift */,
+				9E02685021790CC90068F084 /* EditGameViewController.swift */,
 			);
 			path = "Video Game Library iOS";
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 				9E026849217622310068F084 /* Video Game.swift in Sources */,
 				9E0268332175088C0068F084 /* AppDelegate.swift in Sources */,
 				9E02684B2176717A0068F084 /* AddNewGameViewController.swift in Sources */,
+				9E02685121790CC90068F084 /* EditGameViewController.swift in Sources */,
 				9E02684721761FE60068F084 /* MainPageTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

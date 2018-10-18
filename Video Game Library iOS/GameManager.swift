@@ -14,12 +14,7 @@ class GameManager {
     static let sharedInstance = GameManager()
     
     //No other file will be able to make instances of this class
-    private init() {
-        
-         gameArray[0].dueDate = Date()
-        gameArray[0].checkedIn = false
-        
-    }
+    private init() { }
     
     
     private var gameArray: [VideoGame] =
@@ -61,6 +56,25 @@ class GameManager {
     func removeGameAtIndex(index: Int) {
         
         gameArray.remove(at: index)
+        
+    }
+    
+    func checkGameInOrOut (at index: Int) {
+        
+        let gameForIndex = gameArray[index]
+        
+        gameArray[index].checkedIn = !gameArray[index].checkedIn
+        
+        if gameForIndex.checkedIn {
+            
+            gameForIndex.dueDate = nil
+            
+        } else {
+            
+            gameForIndex.dueDate = Calendar.current.date(byAdding: .day, value: 5, to: Date())
+            
+        }
+
         
     }
     

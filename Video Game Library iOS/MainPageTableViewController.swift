@@ -13,6 +13,8 @@ class MainPageTableViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBOutlet weak var tableView: UITableView!
     
+    var currentGame: VideoGame!
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return GameManager.sharedInstance.getGameCount()
@@ -64,7 +66,27 @@ class MainPageTableViewController: UIViewController, UITableViewDelegate, UITabl
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
         
-        return [deleteAction]
+        let gameForIndex = GameManager.sharedInstance.getGame(at: indexPath.row)
+        
+        let title = gameForIndex.checkedIn ? "Check Out" : "Check In"
+        
+        let checkOutOrInAction = UITableViewRowAction(style: .normal, title: title) { (_, _) in
+            
+            GameManager.sharedInstance.checkGameInOrOut(at: indexPath.row)
+            
+            tableView.reloadRows(at: [indexPath], with: .fade)
+            
+        }
+        
+        let showEditScreenAction = UITableViewRowAction(style: .normal, title: "Edit") { (_, _) in
+            
+            self.currentGame = GameManager.sharedInstance.getGame(at: indexPath.row)
+            self.performSegue(withIdentifier: "EditGameScreen", sender: self)
+        }
+        
+        showEditScreenAction.backgroundColor = UIColor.blue
+        
+        return [deleteAction, checkOutOrInAction, showEditScreenAction]
         
     }
     
@@ -86,6 +108,16 @@ class MainPageTableViewController: UIViewController, UITableViewDelegate, UITabl
         super.viewWillAppear(animated)
         
         tableView.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let destination = segue.destination as? EditGameViewController {
+            
+            destination.gameToEdit = currentGame
+            
+        }
+        
     }
     
     @IBAction func unwindToGameList(segue: UIStoryboardSegue) { }
