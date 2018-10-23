@@ -61,8 +61,11 @@ class MainPageTableViewController: UIViewController, UITableViewDelegate, UITabl
         //this allows us to return an array of actions that the row will have (if any)
         
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (_, _) in
+            
             //remove the game from current index from our game
+            
             GameManager.sharedInstance.removeGameAtIndex(index: indexPath.row)
+            
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
         
@@ -81,6 +84,7 @@ class MainPageTableViewController: UIViewController, UITableViewDelegate, UITabl
         let showEditScreenAction = UITableViewRowAction(style: .normal, title: "Edit") { (_, _) in
             
             self.currentGame = GameManager.sharedInstance.getGame(at: indexPath.row)
+            
             self.performSegue(withIdentifier: "EditGameScreen", sender: self)
         }
         
@@ -121,6 +125,8 @@ class MainPageTableViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     @IBAction func unwindToGameList(segue: UIStoryboardSegue) { }
+    
+    
     
 
     /*

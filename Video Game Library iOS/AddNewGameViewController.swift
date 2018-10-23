@@ -13,11 +13,11 @@ class AddNewGameViewController: UIViewController, UIPickerViewDelegate, UIPicker
     @IBOutlet weak var genrePicker: UIPickerView!
     
     @IBOutlet weak var titleOfGame: UITextField!
-    
+
     @IBOutlet weak var ratingChooser: UISegmentedControl!
     
     
-    var pickerData: [String] = ["Action/Adventure", "Sandbox", "Role-Playing Games", "First-Person Shooter", "Open World", "Platformer", "Fighting", "Real-Time Strategy", "Hack 'n Slash", "Stealth"]
+    var pickerData: [String] = ["Action/Adventure", "Sandbox", "Role-Playing Game", "First-Person Shooter", "Open World", "Platformer", "Fighting", "Strategy", "Hack 'n Slash", "Stealth"]
     
     var rating = ""
     
@@ -69,7 +69,13 @@ class AddNewGameViewController: UIViewController, UIPickerViewDelegate, UIPicker
         }
         
         
-        let newGame = VideoGame(title: titleOfGame.text!, genre: selectedGenre , rating: rating)
+        let newGame = VideoGame()
+        
+        newGame.title = titleOfGame.text!
+        
+        newGame.genre = selectedGenre
+        
+        newGame.rating = rating
         
         GameManager.sharedInstance.addGame(game: newGame)
         

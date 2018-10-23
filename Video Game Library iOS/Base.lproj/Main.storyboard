@@ -200,6 +200,7 @@
                                 <state key="normal" title="Submit"/>
                                 <connections>
                                     <action selector="submitButtonTapped:" destination="m7j-de-Ukb" eventType="touchUpInside" id="dXK-Zw-erF"/>
+                                    <action selector="submitButtonTapped:" destination="RKs-qm-Y0N" eventType="touchUpInside" id="tFr-uA-O7P"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -233,9 +234,11 @@
                         <outlet property="genrePicker" destination="ni3-2o-Yqp" id="eaS-xa-5Cm"/>
                         <outlet property="ratingPicker" destination="Lxl-un-Q8A" id="yXm-bQ-VJc"/>
                         <outlet property="titleTextField" destination="Izs-nu-Ldd" id="dey-eg-8IA"/>
+                        <segue destination="Vnr-yp-hHA" kind="unwind" identifier="unwindToGameList" unwindAction="unwindToGameListWithSegue:" id="cSz-15-qIX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QUs-EX-9ZI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Vnr-yp-hHA" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-881.15942028985512" y="184.82142857142856"/>
         </scene>

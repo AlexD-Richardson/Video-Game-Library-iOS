@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import RealmSwift
+import UserNotifications
 
 class GameManager {
     
@@ -14,18 +16,16 @@ class GameManager {
     static let sharedInstance = GameManager()
     
     //No other file will be able to make instances of this class
-    private init() { }
-    
-    
-    private var gameArray: [VideoGame] =
+    private init() {
         
-        [VideoGame(title: "Fallout 3", genre: "Role-Playing Game", rating: "M"),
-         
-         VideoGame(title: "Red Dead Redemption", genre: "Open World", rating: "M"),
-         
-         VideoGame(title: "Batman Arkham City", genre: "Action/Adventure", rating: "T"),
-         
-         VideoGame(title: "Super Smash Bros Melee", genre: "Fighting", rating: "T")]
+        gameArray = realm.objects(VideoGame.self)
+        
+    }
+    
+    
+    private var gameArray: Results<VideoGame>!
+    
+    let realm = try! Realm()
     
     
     func getGameCount() -> Int {
@@ -43,7 +43,9 @@ class GameManager {
     
     func addGame(game: VideoGame) {
         
-        gameArray.append(game)
+        try! realm.write {
+            realm.add(game)
+        }
         
     }
     
@@ -55,7 +57,9 @@ class GameManager {
     
     func removeGameAtIndex(index: Int) {
         
-        gameArray.remove(at: index)
+        try! realm.write {
+            realm.delete(getGame(at: index))
+        }
         
     }
     
@@ -63,18 +67,42 @@ class GameManager {
         
         let gameForIndex = gameArray[index]
         
-        gameArray[index].checkedIn = !gameArray[index].checkedIn
+        try! realm.write {
+            
+            gameForIndex.checkedIn = !gameForIndex.checkedIn
         
-        if gameForIndex.checkedIn {
-            
-            gameForIndex.dueDate = nil
-            
-        } else {
-            
-            gameForIndex.dueDate = Calendar.current.date(byAdding: .day, value: 5, to: Date())
-            
+            if gameForIndex.checkedIn {
+                
+                gameForIndex.dueDate = nil
+                
+            } else {
+                
+                gameForIndex.dueDate = Calendar.current.date(byAdding: .day, value: 5, to: Date())
+                
+                let center = UNUserNotificationCenter.current()
+                
+                let content = UNMutableNotificationContent()
+                
+                content.title = gameForIndex.title
+                
+                content.body = "Your game is due"
+                
+                let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: gameForIndex.dueDate!)
+                
+                let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
+                
+                let identifier = gameForIndex.title
+                
+                let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+                
+                center.add(request, withCompletionHandler: { error in
+                    if let error = error {
+                        
+                        print(error.localizedDescription)
+                    }
+                })
+            }
         }
-
         
     }
     
